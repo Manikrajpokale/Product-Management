@@ -1,0 +1,28 @@
+<!-- src/app/components/product-form/product-form.component.html -->
+<div>
+    <h2>{{ product.id === 0 ? 'Add New Product' : 'Edit Product' }}</h2>
+  
+    <form (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Product Name</mat-label>
+        <input matInput [(ngModel)]="product.name" name="name" required />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Price</mat-label>
+        <input matInput [(ngModel)]="product.price" name="price" type="number" required />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Category</mat-label>
+        <mat-select [(ngModel)]="product.category" name="category" required>
+          <mat-option *ngFor="let category of categories" [value]="category">{{ category }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-checkbox [(ngModel)]="product.inStock" name="inStock">In Stock</mat-checkbox>
+  
+      <button mat-raised-button color="primary" type="submit">{{ product.id === 0 ? 'Add Product' : 'Update Product' }}</button>
+    </form>
+  </div>
+  
